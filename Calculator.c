@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <math.h>
 
+#define CLEAR printf("\e[1;1H\e[2J")
+#define RED "\033[0;31m"
+#define GREEN "\033[1;32m"
+
 double somaLonga(double*, int);
 double maior(double*, int);
 double media(double*, int);
@@ -22,6 +26,9 @@ int main(void) {
 	while(operacao != 's' && operacao != 'S'){
 	menu();
 	scanf(" %c", &operacao);
+
+	CLEAR;
+
 	calculator();
 	}
 	printf("Saindo, foi bom trabalhar com voce!\n");
@@ -166,4 +173,3 @@ void leitor(void){
 		printf("valor 2: ");
 		scanf("%lf", &b);
  }
- 
