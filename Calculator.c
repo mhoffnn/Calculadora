@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <math.h>
 
+//Estilização e perfumaria
 #define CLEAR printf("\e[1;1H\e[2J")
 #define RED "\033[0;31m"
 #define GREEN "\033[1;32m"
 
+//Declaração de funções antes da main
 double somaLonga(double*, int);
 double maior(double*, int);
 double media(double*, int);
@@ -17,18 +19,18 @@ void calculator(void);
 void menu(void);
 void leitor(void);
 
+//Declaração de variáveis globais
 double a;
 double b;
 double vetor[5];
 char operacao;
 
+//Função principal que requisita as funções secundárias
 int main(void) {
 	while(operacao != 's' && operacao != 'S'){
 	menu();
 	scanf(" %c", &operacao);
-
 	CLEAR;
-
 	calculator();
 	}
 	printf("Saindo, foi bom trabalhar com voce!\n");
@@ -36,20 +38,22 @@ int main(void) {
 }
 
 double soma(double* a, double* b){
+	printf("Voce esta realizando soma entre 2 numeros\n");
 	return *a + *b;
 }
 
 double subtracao(double *a, double *b){
+	printf("Voce esta realizando subtracao entre 2 numeros\n");
 	return *a - *b;
 }
 
 double multiplicacao(double *a, double *b){
+	printf("Voce esta realizando multiplicao entre 2 numeros\n");
 	return *a * *b;
 }
 
 double divisao(double *a, double *b){
-	
-	
+	printf("Voce esta realizando divisão entre 2 numeros\n");
 	double result;
 	do{
 		if(*b == 0){
@@ -62,6 +66,7 @@ double divisao(double *a, double *b){
 }
 
 double media(double* vetor, int tam){
+	printf("Voce esta realizando a operação de media\n");
 	int i; 
 	double result = 0;
 	for(i = 0; i < tam; i++){
@@ -73,6 +78,7 @@ double media(double* vetor, int tam){
 }
 
 double somaLonga(double* vetor, int tam){
+	printf("Voce esta realizando soma entre 5 numeros\n");
 	int i;
 	double result = 0;
 	for(i = 0; i < tam; i++){
@@ -84,9 +90,9 @@ double somaLonga(double* vetor, int tam){
 }
 
 double maior(double* vetor, int tam){
+	printf("Voce esta verificando o maior valor entre 5 numeros\n");
 	int i;
-	double result = -10001;
-	printf("Insira valores entre 10.000 e -10.000\n");
+	double result = -99999999;
 	for(i = 0; i < tam; i++){
 		printf("valor %i: ", i + 1);
 		scanf(" %lf", &vetor[i]);
@@ -96,6 +102,7 @@ double maior(double* vetor, int tam){
 	return result;
 }
 
+// Função que informa o usuário as opções
 void menu(void){
 	printf("Escolha a operacao a ser realizada:\n");
 	printf("A - Soma entre 2 numeros\n");
@@ -108,6 +115,7 @@ void menu(void){
 	printf("Para sair digite 's'\n");
 }
 
+// Função de seleção de operação de acordo com a entrada do usuário
 void calculator(void){
 	double resultado;
 	switch(operacao){
@@ -168,8 +176,8 @@ void calculator(void){
 }
 
 void leitor(void){
-		printf("valor 1: ");
+		printf(GREEN"Valor 1: ");
 		scanf("%lf", &a);
-		printf("valor 2: ");
+		printf(GREEN"Valor 2: ");
 		scanf("%lf", &b);
  }
