@@ -6,6 +6,9 @@
 #define CLEAR printf("\e[1;1H\e[2J")
 #define RED "\033[0;31m"
 #define GREEN "\033[1;32m"
+#define NOCOLOR "\033[0m"
+#define YELLOW "\033[0;33m"
+#define BYELLOW "\033[1;33m"
 
 //Declaração de funções antes da main
 double somaLonga(double*, int);
@@ -57,7 +60,7 @@ double divisao(double *a, double *b){
 	double result;
 	do{
 		if(*b == 0){
-			printf("Favor insira valores validos\n");
+			printf(RED"Favor insira valores validos\n");
 			leitor();
 		}
 	}while(*b == 0);
@@ -104,15 +107,15 @@ double maior(double* vetor, int tam){
 
 // Função que informa o usuário as opções
 void menu(void){
-	printf("Escolha a operacao a ser realizada:\n");
-	printf("A - Soma entre 2 numeros\n");
-	printf("B - Subtracao entre 2 numeros\n");
-	printf("C - Divisao entre 2 numeros\n");
-	printf("D - Multiplicacao entre 2 numeros\n");
-	printf("E - Media entre 5 numeros\n");
-	printf("F - Soma entre 5 numeros\n");
-	printf("G - Maior numero decimal entre 5 numeros\n");
-	printf("Para sair digite 's'\n");
+	printf(BYELLOW"Escolha a operacao a ser realizada:\n");
+	printf(BYELLOW"A"YELLOW" - Soma entre 2 numeros\n");
+	printf(BYELLOW"B"YELLOW" - Subtracao entre 2 numeros\n");
+	printf(BYELLOW"C"YELLOW" - Divisao entre 2 numeros\n");
+	printf(BYELLOW"D"YELLOW" - Multiplicacao entre 2 numeros\n");
+	printf(BYELLOW"E"YELLOW" - Media entre 5 numeros\n");
+	printf(BYELLOW"F"YELLOW" - Soma entre 5 numeros\n");
+	printf(BYELLOW"G"YELLOW" - Maior numero decimal entre 5 numeros\n");
+	printf(BYELLOW"Para sair digite "RED"'s'\n"NOCOLOR);
 }
 
 // Função de seleção de operação de acordo com a entrada do usuário
@@ -123,61 +126,61 @@ void calculator(void){
 		case 'A':
 			leitor();
 			resultado = soma(&a, &b);
-			printf("resultado = %.2lf\n\n", resultado);
+			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'b':
 		case 'B':
 			leitor();
 			resultado = subtracao(&a, &b);
-			printf("resultado = %.2lf\n\n", resultado);
+			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'c':
 		case 'C':
 			leitor();
 			resultado = divisao(&a, &b);
-			printf("resultado = %.2lf\n\n", resultado);
+			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'd':
 		case 'D':
 			leitor();
 			resultado = multiplicacao(&a, &b);
-			printf("resultado = %.2lf\n\n", resultado);
+			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'e':
 		case 'E':
 			resultado = media(vetor, 5);
-			printf("resultado = %.2lf\n\n", resultado);
+			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'f':
 		case 'F':
 			resultado = somaLonga(vetor, 5);
-			printf("resultado = %.2lf\n\n", resultado);
+			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'g':
 		case 'G':
 			resultado = maior(vetor, 5);
-			printf("resultado = %.2lf\n\n", resultado);
+			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 's':
 		case 'S':
-			printf("Um segundo..\n");
+			printf(YELLOW"Um segundo..\n"NOCOLOR);
 			break;
 			
 		default:
-			printf("Escolha uma opcao valida, fazendo um favor!!!\n\n");
+			printf(RED"Escolha uma opcao valida, fazendo um favor!!!\n\n"NOCOLOR);
 	}
 }
 
 void leitor(void){
-		printf(GREEN"Valor 1: ");
+		printf(GREEN"Valor 1: "NOCOLOR);
 		scanf("%lf", &a);
-		printf(GREEN"Valor 2: ");
+		printf(GREEN"Valor 2: "NOCOLOR);
 		scanf("%lf", &b);
  }
