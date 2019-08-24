@@ -1,6 +1,6 @@
 # Calculadora
 
-Essa calculadora foi desenvolvida para completar o exercício de algorítimos 2. Solicitada pelo Prof. Dr. Anderson Chaves Carniel.
+Essa calculadora foi desenvolvida para completar o exercício de algorítimos 2. Solicitada pelo Prof. Dr. Anderson Chaves Carniel. disponível no link: https://github.com/mhoffnn/Calculadora
 
 ## Seus requisitos foram:
 - Soma de 2 números decimais informados pelo usuário
