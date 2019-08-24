@@ -9,6 +9,7 @@
 #define NOCOLOR "\033[0m"
 #define YELLOW "\033[0;33m"
 #define BYELLOW "\033[1;33m"
+#define MAGENTA "\033[1;35m"
 
 //Declaração de funções antes da main
 double somaLonga(double*, int);
@@ -26,37 +27,34 @@ void leitor(void);
 double a;
 double b;
 double vetor[5];
-char operacao;
+char operacao[1];
 
 //Função principal que requisita as funções secundárias
 int main(void) {
-	while(operacao != 's' && operacao != 'S'){
+	operacao[1] = 'j';
+	while(operacao[1] != 's' && operacao[1] != 'S'){
 	menu();
-	scanf(" %c", &operacao);
+	scanf(" %c", &operacao[1]);
 	CLEAR;
-	calculator();
-	}
-	printf("Saindo, foi bom trabalhar com voce!\n");
+	calculator();	
+}
+	printf(BYELLOW"Saindo, foi bom trabalhar com voce!\n");
 	return 0;
 }
 
 double soma(double* a, double* b){
-	printf("Voce esta realizando soma entre 2 numeros\n");
 	return *a + *b;
 }
 
 double subtracao(double *a, double *b){
-	printf("Voce esta realizando subtracao entre 2 numeros\n");
 	return *a - *b;
 }
 
 double multiplicacao(double *a, double *b){
-	printf("Voce esta realizando multiplicao entre 2 numeros\n");
 	return *a * *b;
 }
 
 double divisao(double *a, double *b){
-	printf("Voce esta realizando divisão entre 2 numeros\n");
 	double result;
 	do{
 		if(*b == 0){
@@ -69,11 +67,10 @@ double divisao(double *a, double *b){
 }
 
 double media(double* vetor, int tam){
-	printf("Voce esta realizando a operação de media\n");
 	int i; 
 	double result = 0;
 	for(i = 0; i < tam; i++){
-		printf("valor %i: ", i + 1);
+		printf(GREEN"valor %i: ", i + 1);
 		scanf(" %lf", &vetor[i]);
 		result += vetor[i];
 	}
@@ -81,11 +78,10 @@ double media(double* vetor, int tam){
 }
 
 double somaLonga(double* vetor, int tam){
-	printf("Voce esta realizando soma entre 5 numeros\n");
 	int i;
 	double result = 0;
 	for(i = 0; i < tam; i++){
-		printf("valor %i: ", i + 1);
+		printf(GREEN"valor %i: ", i + 1);
 		scanf(" %lf", &vetor[i]);
 		result += vetor[i];
 	}
@@ -93,11 +89,10 @@ double somaLonga(double* vetor, int tam){
 }
 
 double maior(double* vetor, int tam){
-	printf("Voce esta verificando o maior valor entre 5 numeros\n");
 	int i;
 	double result = -99999999;
 	for(i = 0; i < tam; i++){
-		printf("valor %i: ", i + 1);
+		printf(GREEN"valor %i: ", i + 1);
 		scanf(" %lf", &vetor[i]);
 		if(vetor[i] >= result)
 		result = vetor[i];
@@ -111,7 +106,7 @@ void menu(void){
 	printf(BYELLOW"A"YELLOW" - Soma entre 2 numeros\n");
 	printf(BYELLOW"B"YELLOW" - Subtracao entre 2 numeros\n");
 	printf(BYELLOW"C"YELLOW" - Divisao entre 2 numeros\n");
-	printf(BYELLOW"D"YELLOW" - Multiplicacao entre 2 numeros\n");
+	printf(BYELLOW"D"YELLOW" - Multipliacacao entre 2 numeros\n");
 	printf(BYELLOW"E"YELLOW" - Media entre 5 numeros\n");
 	printf(BYELLOW"F"YELLOW" - Soma entre 5 numeros\n");
 	printf(BYELLOW"G"YELLOW" - Maior numero decimal entre 5 numeros\n");
@@ -121,9 +116,10 @@ void menu(void){
 // Função de seleção de operação de acordo com a entrada do usuário
 void calculator(void){
 	double resultado;
-	switch(operacao){
+	switch(operacao[1]){
 		case 'a':
 		case 'A':
+			printf(MAGENTA"Voce esta realizando soma entre 2 numeros\n"NOCOLOR);
 			leitor();
 			resultado = soma(&a, &b);
 			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
@@ -131,6 +127,7 @@ void calculator(void){
 			
 		case 'b':
 		case 'B':
+			printf(MAGENTA"Voce esta realizando subtracao entre 2 numeros\n"NOCOLOR);
 			leitor();
 			resultado = subtracao(&a, &b);
 			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
@@ -138,6 +135,7 @@ void calculator(void){
 			
 		case 'c':
 		case 'C':
+			printf(MAGENTA"Voce esta realizando divisão entre 2 numeros\n"NOCOLOR);
 			leitor();
 			resultado = divisao(&a, &b);
 			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
@@ -145,6 +143,7 @@ void calculator(void){
 			
 		case 'd':
 		case 'D':
+			printf(MAGENTA"Voce esta realizando multiplicao entre 2 numeros\n"NOCOLOR);
 			leitor();
 			resultado = multiplicacao(&a, &b);
 			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
@@ -152,18 +151,21 @@ void calculator(void){
 			
 		case 'e':
 		case 'E':
+			printf(MAGENTA"Voce esta realizando a operação de media\n"NOCOLOR);
 			resultado = media(vetor, 5);
 			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'f':
 		case 'F':
+			printf(MAGENTA"Voce esta realizando soma entre 5 numeros\n"NOCOLOR);
 			resultado = somaLonga(vetor, 5);
 			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
 			
 		case 'g':
 		case 'G':
+			printf(MAGENTA"Voce esta verificando o maior valor entre 5 numeros\n"NOCOLOR);
 			resultado = maior(vetor, 5);
 			printf(GREEN"resultado = %.2lf\n\n"NOCOLOR, resultado);
 			break;
@@ -180,7 +182,7 @@ void calculator(void){
 
 void leitor(void){
 		printf(GREEN"Valor 1: "NOCOLOR);
-		scanf("%lf", &a);
+		scanf(" %lf", &a);
 		printf(GREEN"Valor 2: "NOCOLOR);
-		scanf("%lf", &b);
+		scanf(" %lf", &b);
  }
